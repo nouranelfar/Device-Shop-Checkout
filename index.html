@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="">
+    <link
+      rel="icon"
+      href="resources/favicon.ico"
+      type="image/x-icon"
+      sizes="96x96"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <title>Device Shop Checkout | devChallenges.io</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-color: #F3F4F6;
+        color: #1D1D1F;
+        font-family: "Poppins", sans-serif, "Inter", "Be Vietnam Pro";
+      }
+      /*header styling*/
+      header{
+        background: url("resources/background-image@2x.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        padding: 30px;
+        height: 220px;
+      }
+      .header_details{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        align-self: start;
+        color: #FFFFFF;
+      }
+      header .header_details p{
+        background-color: #1D1D1F;
+        padding: 4px 12px;
+        font-size: 14px;
+        border-radius: 15px;
+        text-transform: uppercase;
+      }
+      /*main styling*/
+      main{
+        position: absolute;
+        width: 95%;
+        top: 100px;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        /* Box-shadow */
+        box-shadow: 0px 4px 4px -1px rgba(17, 23, 41, 0.05);
+      }
+      /*section_one_styling*/
+      main .items{
+        padding: 30px 30px 0 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        background-color: #E5E7EB;
+        border-radius: 15px 15px 0 0;
+      }
+      .items p{
+        font-weight: 600;
+      }
+      main .items .item1{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+      main .items .item1 .item_details{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .item_container{
+        display: flex;
+        gap: 20px;
+      }
+      .img_container{
+        background-color: #F3F4F6;
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: #D2D5DA 1px solid;
+      }
+      span{
+        color: #394150;
+      }
+      .span2{
+        transform: translateY(32px);
+      }
+      main .items .item1 .price{
+        text-align: end;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: end;
+      }
+      
+      hr{
+        border: none;
+        border: 0.5px #D2D5DA solid;
+        
+      }
+
+      .couponCode-container{
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        background-color: #E5E7EB;
+      }
+      .couponCode-items{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .couponCode-container input{
+        padding-left: 15px;
+        width: 74%;
+        border: #D2D5DA solid 1px;
+        border-radius: 10px;
+        
+      }
+      .couponCode-container input::placeholder{
+        font-size: 16px;
+        color: #394150;
+      }
+      .couponCode-container button{
+        width: 24%;
+        height: 50px;
+        background-color: #1D1D1F;
+        border: #1D1D1F solid 1px;
+        border-radius: 10px;
+        color: #FFFFFF;
+        font-size: 16px;
+        transition: 0.3s ease-in-out;
+      }
+      .couponCode-container button:hover{
+        transform: scale(1.06);
+        cursor: pointer;
+      }
+      .couponCode-details{
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+      }
+      .couponCode-details .total-price{
+        text-align: end;
+      }
+      .couponCode-details div{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      /*section_two_styling*/
+      .form_container{
+        background-color: #FFFFFF;
+        padding: 0 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        border-radius: 0 0 15px 15px;
+      }
+      .form_container h2{
+        font-weight: 600;
+        font-size: 18px;
+        padding: 30px 0 10px 0;
+      }
+      .form_input_container{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .form_input_container input , select{
+        height: 55px;
+        border-radius: 10px;
+        background-color: #F3F4F6;
+        border: #D2D5DA 1px solid;
+        padding: 0 10px;
+        font-size: 16px;
+      }
+      .form_container button{
+        width: 94%;
+        align-self: center;
+        height: 55px;
+        margin-bottom: 30px;
+        background-color: #1D1D1F;
+        color: #FFFFFF;
+        font-size: 16px;
+        border: #1D1D1F 1px solid;
+        border-radius: 10px;
+        transition: 0.3s ease-in-out;
+      }
+      .form_container button:hover{
+        transform: scale(1.05);
+        cursor: pointer;
+      }
+
+      .countryAndCode{
+        display: flex;
+        gap: 4%;
+      }
+      .countryAndCode div{
+        width: 48%;
+      }
+
+      /*screens from 1024px to 1349px*/
+      @media (min-width: 1024px) and (max-width: 1349px) {
+        main{
+          display: flex;
+          flex-direction: row;
+          width: 90%;
+          gap: 0;
+        }
+        main .items{
+          width: 50%;
+          border-radius: 15px 0 0 15px;
+        }
+        .form_container{
+          width: 50%;
+          border-radius: 0 15px 15px 0;
+        }
+        .couponCode-container input{
+          width: 62%;
+          height: 55px;
+        }
+        .couponCode-container button{
+          width: 35%;
+          height: 55px;
+        }
+        .couponCode-details div{
+          gap: 15px;
+        }
+        .form_container button{
+          height: 60px;
+        }
+      }
+
+      /* wider than 1350px screens*/
+      @media (min-width: 1350px) {
+        header{
+          background: url("resources/background-image.png");
+          height: 240px;
+          padding-top: 45px;
+        }
+        header .header_details p{
+          font-size: 16px;
+        }
+        main{
+          display: flex;
+          flex-direction: row;
+          width: 90%;
+          gap: 0;
+          top: 130px;
+        }
+        main .items{
+          width: 50%;
+          border-radius: 15px 0 0 15px;
+        }
+        .form_container{
+          width: 50%;
+          border-radius: 0 15px 15px 0;
+        }
+        .form_container button{
+          width: 99%;
+        }
+        .form_container button:hover{
+          transform: scale(1.04);
+        }
+        .couponCode-container input{
+          width: 74%;
+          height: 60px;
+        }
+        .couponCode-container button{
+          width: 24%;
+          height: 60px;
+        }
+        .couponCode-details div{
+          gap: 15px;
+        }
+        .form_container button{
+          height: 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header_details">
+        <h1>Checkout</h1>
+        <p>3 items</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="items">
+        <div class="item1">
+          <div class="item_container">
+            <div class="img_container">
+              <img src="resources/Gold.png" width="39" height="79" alt="iPhone 12 Pro">
+            </div>
+            <div class="item_details">
+              <p>iPhone 12 Pro</p>
+              <span>Golden</span>
+              <span class="span2">x 1</span>
+            </div>
+          </div>
+          <div class="price">
+            <p>$999.00</p>
+            <img src="resources/close-icon.svg" alt="close-icon" width="24" height="24">
+          </div>
+        </div>
+
+        <div class="item1">
+          <div class="item_container">
+            <div class="img_container">
+              <img src="resources/Apple-watch.png" width="30" height="53" alt="Apple-watch">
+            </div>
+            <div class="item_details">
+              <p>Apple Watch</p>
+              <span>Blue</span>
+              <span class="span2">x 1</span>
+            </div>
+          </div>
+          <div class="price">
+            <p>$399.00</p>
+            <img src="resources/close-icon.svg" alt="close-icon" width="24" height="24">
+          </div>
+        </div>
+
+        <div class="item1">
+          <div class="item_container">
+            <div class="img_container">
+              <img src="resources/iMac.png" width="80" height="68" alt="iMac">
+            </div>
+            <div class="item_details">
+              <p>iMac</p>
+              <span>Green</span>
+              <span class="span2">x 1</span>
+            </div>
+          </div>
+          <div class="price">
+            <p>$1199.00</p>
+            <img src="resources/close-icon.svg" alt="close-icon" width="24" height="24">
+          </div>
+        </div>
+        <hr>
+
+        <div class="couponCode-container">
+        <div class="couponCode-items">
+          <input type="text" name="couponCode" id="couponCode" placeholder="Enter coupon code">
+          <button type="submit" title="submit">Apply Coupon</button>
+        </div>
+        <div class="couponCode-details">
+          <div>
+            <span>Sub total</span>
+            <span>Tax</span>
+            <p>Total</p>
+          </div>
+          <div class="total-price">
+            <span>$2597.00</span>
+            <span>$623.28</span>
+            <p>$3220.28</p>
+          </div>
+        </div>
+      </div>
+      </section>
+
+      
+
+      <section class="form_container">
+        <h2>Contact Information</h2>
+        <div class="form_input_container">
+          <label for="username">First & Last name</label>
+          <input type="text" name="username" id="username" placeholder="Enter First & Last name">
+        </div>
+        <div class="form_input_container">
+          <label for="email">Email Address</label>
+          <input type="email" name="email" id="email" placeholder="Enter First & Last name">
+        </div>
+        <div class="countryAndCode">
+          <div class="form_input_container">
+            <label for="country">Country</label>
+            <select name="country" id="country">
+              <option value="Finland">Finland</option>
+              <option value="USA">USA</option>
+              <option value="ALK">ALK</option>
+            </select>
+          </div>
+          
+          <div class="form_input_container">
+            <label for="postalCode">Postal Code</label>
+            <input type="number" name="postalCode" id="postalCode" placeholder="00270">
+          </div>
+        </div>
+        <button type="submit" title="submit">Continue</button>
+      </section>
+    </main>
+  </body>
+</html>
